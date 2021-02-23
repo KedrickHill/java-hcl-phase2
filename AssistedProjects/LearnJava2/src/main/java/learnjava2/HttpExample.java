@@ -8,7 +8,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class HttpExample {
 
-    public doGet() {
+    public void doGet() {
         try {
             URL url = new URL("http://www.google.com");
             HttpsURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -28,10 +28,10 @@ public class HttpExample {
         }
     }
 
-    public doPost() {
+    public void doPost() {
         try {
             URL url = new URL("http://ptsv2.com/");
-            HttpsURLConnection conn = (HttpURLConnection) url.openConnection();
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("User-Agent", "Java Browser");
             BufferedReader rdr = new BufferedReader(new InputStreamReader(conn.getInputStream()));
