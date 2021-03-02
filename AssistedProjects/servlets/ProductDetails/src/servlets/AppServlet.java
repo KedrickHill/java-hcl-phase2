@@ -19,7 +19,6 @@ import servlets.model.DBConnection;
 /**
  * Servlet implementation class AppServlet
  */
-@WebServlet("/ProductDetails/")
 public class AppServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

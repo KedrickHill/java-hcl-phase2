@@ -1,6 +1,15 @@
-
-
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import com.example.HibernateUtil;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
@@ -52,8 +61,16 @@ public class InitHibernate extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		PrintWriter out = response.getWriter();
+		
+		String fname = request.getParameter("fname");
+		String lname = request.getParameter("lname");
+		out.println("<html><body>");
+		out.println("Greetings " + fname +" " +  lname + ". Nice to meet you. <br>");
+		
+		out.println("<a href='index.jsp'> Return to Main Screen.</a><br>");
+		out.println("</body></html>");
+//		doGet(request, response);
 	}
 
 }
