@@ -24,6 +24,13 @@
 		<servlet-name>ListProducts</servlet-name>
 		<servlet-class>ListProducts</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>AddProduct</display-name>
+		<servlet-name>AddProduct</servlet-name>
+		<servlet-class>AddProduct</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>InitHibernate</servlet-name>
 		<url-pattern>/init</url-pattern>
@@ -31,5 +38,9 @@
 	<servlet-mapping>
 		<servlet-name>ListProducts</servlet-name>
 		<url-pattern>/list</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddProduct</servlet-name>
+		<url-pattern>/ProductAdded</url-pattern>
 	</servlet-mapping>
 </web-app>

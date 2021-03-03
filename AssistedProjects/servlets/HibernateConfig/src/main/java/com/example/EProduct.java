@@ -25,6 +25,10 @@ public class EProduct {
 	@Column(name="date_added")
 	private Date dateAdded;
 	
+	public EProduct() {
+		super();
+	}
+	
 	public EProduct(long iD, String name, BigDecimal price, Date dateAdded) {
 		super();
 		ID = iD;
@@ -44,6 +48,7 @@ public class EProduct {
 	public String getName() {
 		return name;
 	}
+
 
 	public void setName(String name) {
 		this.name = name;
