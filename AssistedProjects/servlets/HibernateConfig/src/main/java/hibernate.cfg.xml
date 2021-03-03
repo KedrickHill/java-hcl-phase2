@@ -12,8 +12,6 @@
 		
 		
 		<mapping class="com.example.EProduct"/>
-		<mapping resource="com.example.EProduct.hbm.xml"/>
-		<mapping class="ListProducts"/>
 
 	</session-factory>
 </hibernate-configuration>
