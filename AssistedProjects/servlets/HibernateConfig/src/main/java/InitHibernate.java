@@ -2,17 +2,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-
-import com.example.HibernateUtil;
-import java.io.PrintWriter;
-
-import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +15,7 @@ import com.example.HibernateUtil;
 /**
  * Servlet implementation class InitHibernate
  */
+@WebServlet("/init")
 public class InitHibernate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -52,6 +43,8 @@ public class InitHibernate extends HttpServlet {
 			out.println("Hibernate Session opened.<br>");
 			session.close();
 			out.println("Hibernate Session closed.<br>");
+
+			out.println("<a href='index.jsp'> Return to Main Screen.</a><br>");
 
 			out.println("</body></html>");
 			factory.close();

@@ -2,17 +2,24 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.hibernate.Transaction;
+
+import org.hibernate.Session;
 
 import com.example.EProduct;
+import com.example.HibernateUtil;
 
 /**
  * Servlet implementation class AddProduct
  */
+@WebServlet("/AddedProduct")
 public class AddProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -37,20 +44,34 @@ public class AddProduct extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		PrintWriter out = response.getWriter();
-		
-		EProduct product = new EProduct();
-		product.setName(request.getParameter("pname"));
+		try {
+			PrintWriter out = response.getWriter();
+			
+			EProduct product = new EProduct();
+			product.setName(request.getParameter("pname"));
 
-		product.setPrice((BigDecimal(Integer.valueOf(request.getParameter("price")));	
-		
-		out.println("<html><body>");
-		out.println("Adding " + pname +" " +  price + ". to the product list. <br>");
+			product.setPrice(new BigDecimal(Double.parseDouble(request.getParameter("price"))));	
+						
+			out.println("<html><body>");
+			out.println("Adding " + product.getName() + " " +  product.getPrice() + " to the product list. <br></br>");
 
-		out.println("<a href='index.jsp'> Return to Main Screen.</a><br>");
-		out.println("</body></html>");
-		
-		//		doGet(request, response);
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			Transaction transaction = session.beginTransaction();
+			
+			session.save(product);
+			transaction.commit();
+			session.close();
+			
+			out.println("<a href='list'> Show List of Products.</a><br></br>");
+
+
+			out.println("<a href='index.jsp'> Return to Main Screen.</a><br>");
+			out.println("</body></html>");
+			
+			//		doGet(request, response);
+		}
+		catch (Exception e) {
+			throw e;
+		}
 	}
-
 }

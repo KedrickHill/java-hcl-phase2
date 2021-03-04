@@ -10,14 +10,15 @@
 	
 	<h4>Add a Product</h4>
 
-	
-	<form action="ProductAdded" method="post">
-		<label for="fname">Product name:</label><br> 
-		<input type="text" id="fname" name="fname" value="Laptop Name"><br> 
-		<label for="lname">Product Price:</label><br> 
-		<input type="text" id="lname" name="lname" value="Price">
+	<br/>
+	<form action="AddedProduct" method="post">
+		<label for="pname">Product name:</label>
+		<input type="text" id="pname" name="pname" value="Laptop Name"><br> 
+		<label for="lname">Product Price:</label>
+		<input type="text" id="price" name="price" value="100">
 		<input type="submit" value="Submit">
 	</form>
+	
 
 </body>
 </html>

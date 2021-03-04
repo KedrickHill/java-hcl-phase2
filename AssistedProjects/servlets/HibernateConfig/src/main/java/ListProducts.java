@@ -45,13 +45,16 @@ public class ListProducts extends HttpServlet {
 			
 			PrintWriter out = response.getWriter();
 			out.println("<html><body>");
-			out.println("<b>Product Listing<\b><br>");
+			out.println("<b>Product Listing<\b><br></br>");
 			for(EProduct p: list ) {
 				out.println("ID: " + String.valueOf(p.getID() + "Name: " + p.getName() 
 				+ "Price: " + String.valueOf(p.getPrice() + "Date Added: " + p.getDateAdded().toString() 
 						+ "<br>")));
 				
 			}
+			
+			out.println("<a href='index.jsp'> Return to Main Screen.</a><br>");
+
 			
 			out.println("</body></html>");
 			factory.close();

@@ -41,6 +41,6 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>AddProduct</servlet-name>
-		<url-pattern>/ProductAdded</url-pattern>
+		<url-pattern>/AddedProduct</url-pattern>
 	</servlet-mapping>
 </web-app>
