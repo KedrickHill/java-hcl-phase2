@@ -12,6 +12,7 @@
 		
 		
 		<mapping class="com.example.EProduct"/>
+		<mapping class="AddProduct"/>
 
 	</session-factory>
 </hibernate-configuration>

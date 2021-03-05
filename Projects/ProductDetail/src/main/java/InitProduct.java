@@ -8,15 +8,18 @@ import java.sql.Statement;
 import java.util.Properties;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mysql.cj.util.StringUtils;
 import com.products.DBConnection;
 
 /**
  * Servlet implementation class InitProduct
  */
+@WebServlet("/init")
 public class InitProduct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -46,9 +49,15 @@ public class InitProduct extends HttpServlet {
 					prop.getProperty("password"));
 			Statement stmt = conn.getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
-			ResultSet rst = stmt.executeQuery("select * from products;");
+			String input = request.getParameter("input");
+			ResultSet rst;
+			
+			if (StringUtils.isStrictlyNumeric(input)) rst=stmt.executeQuery("select * from products where id='" + input + "';");
+			else rst=stmt.executeQuery("select * from products where name='" + input + "';");
+			
 //			out.println("DB Connection Initialized");
-			out.println("<table><tr><th>Name</th><th>Color</th><th>Price</th></tr>");
+			
+			out.println("<table style='width:20%'><tr style=text-align:left><th>Name</th><th>Color</th><th>Price</th></tr>");
 
 			while (rst.next()) {
 				out.println("<tr><td>" + rst.getString("name") + "</td>" + "<td>" + rst.getString("color") + "</td><td>"

@@ -20,6 +20,6 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>InitProduct</servlet-name>
-		<url-pattern>/InitProduct</url-pattern>
+		<url-pattern>/init</url-pattern>
 	</servlet-mapping>
 </web-app>
