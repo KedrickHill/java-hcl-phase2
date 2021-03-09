@@ -2,15 +2,16 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.hibernate.Transaction;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import com.example.EProduct;
 import com.example.HibernateUtil;
@@ -50,19 +51,22 @@ public class AddProduct extends HttpServlet {
 		try {
 			PrintWriter out = response.getWriter();
 
+			SessionFactory factory = HibernateUtil.getSessionFactory();
+			Session session = factory.openSession();
+			session.beginTransaction();
+//			Transaction transaction = session.beginTransaction();
+			
 			EProduct product = new EProduct();
 			product.setName(request.getParameter("pname"));
-
 			product.setPrice(new BigDecimal(Double.parseDouble(request.getParameter("price"))));
+			product.setDateAdded(new Date());
 
-			out.println("<html><body>");
+			out.println("<html><body><h2>New Registered User</h2>");
 			out.println("Adding " + product.getName() + " " + product.getPrice() + " to the product list. <br></br>");
 
-			Session session = HibernateUtil.getSessionFactory().openSession();
-			Transaction transaction = session.beginTransaction();
-
 			session.save(product);
-			transaction.commit();
+			session.getTransaction().commit();
+//			transaction.commit();
 			session.close();
 
 			out.println("<a href='list'> Show List of Products.</a><br></br>");
@@ -70,7 +74,7 @@ public class AddProduct extends HttpServlet {
 			out.println("<a href='index.jsp'> Return to Main Screen.</a><br>");
 			out.println("</body></html>");
 
-			// doGet(request, response);
+//			 doGet(request, response);
 		} catch (Exception e) {
 			throw e;
 		}

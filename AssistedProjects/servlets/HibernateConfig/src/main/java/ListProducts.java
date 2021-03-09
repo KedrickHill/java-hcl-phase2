@@ -45,19 +45,25 @@ public class ListProducts extends HttpServlet {
 			
 			PrintWriter out = response.getWriter();
 			out.println("<html><body>");
-			out.println("<b>Product Listing<\b><br></br>");
+			
+			out.println("<b>Product Listing</b>");
+			out.println("<table style='width:20%'><tr style=text-align:left><th>ID</th><th>Name</th><th>Price</th><th>Date Added</th></tr>");
+
 			for(EProduct p: list ) {
-				out.println("ID: " + String.valueOf(p.getID() + "Name: " + p.getName() 
-				+ "Price: " + String.valueOf(p.getPrice() + "Date Added: " + p.getDateAdded().toString() 
-						+ "<br>")));
+				out.println("<tr><td>" + String.valueOf(p.getID() + "</td><td>" + p.getName() 
+				+ "</td><td>" + String.valueOf(p.getPrice() + "</td><td>" + p.getDateAdded().toString() 
+						+ "</td><br>")));
 				
 			}
-			
+			out.println("</table><br/>");
+
 			out.println("<a href='index.jsp'> Return to Main Screen.</a><br>");
 
 			
 			out.println("</body></html>");
-			factory.close();
+//			factory.close();
+			session.close();
+
 		} catch (Exception e) {
 			throw e;
 		}

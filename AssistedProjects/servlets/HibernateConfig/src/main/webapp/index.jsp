@@ -13,9 +13,9 @@
 	<br/>
 	<form action="AddedProduct" method="post">
 		<label for="pname">Product name:</label>
-		<input type="text" id="pname" name="pname" value="Laptop Name"><br> 
+		<input type="text" id="pname" name="pname" placeholder="Laptop Name"><br> 
 		<label for="lname">Product Price:</label>
-		<input type="text" id="price" name="price" value="100">
+		<input type="text" id="price" name="price" placeholder="Price">
 		<input type="submit" value="Submit">
 	</form>
 	

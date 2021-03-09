@@ -47,7 +47,9 @@ public class InitHibernate extends HttpServlet {
 			out.println("<a href='index.jsp'> Return to Main Screen.</a><br>");
 
 			out.println("</body></html>");
-			factory.close();
+//			factory.close();
+			session.close();
+
 		} catch (Exception e) {
 			throw e;
 		}
